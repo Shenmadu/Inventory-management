@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
@@ -18,7 +19,9 @@ public class DashboardFormController {
     public JFXRadioButton user;
     public JFXRadioButton admin;
 
-    public AnchorPane pane;
+
+
+
 
 
     public void logInButtonOnAction(ActionEvent actionEvent) {
@@ -42,7 +45,9 @@ public class DashboardFormController {
 
 
        }else if(admin.isSelected()){
+
            if ((userNameTxt.getText().equals("aaa")) && passwordTxt.getText().equals("1111") ) {
+
 
                Stage stage=(Stage) user.getScene().getWindow();
                try {

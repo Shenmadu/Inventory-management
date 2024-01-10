@@ -87,13 +87,13 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <JFXTextField fx:id="userNameTxt" focusColor="WHITE" maxWidth="300.0" style="-fx-text-fill: WHITE" unFocusColor="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -106,7 +106,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="359.0" layoutY="12.0" text="Password" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Label layoutX="359.0" layoutY="12.0" text="Password" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -116,9 +116,9 @@
                         <Font size="18.0" />
                      </font>
                   </JFXPasswordField>
-                  <JFXButton maxWidth="300.0" onAction="#logInButtonOnAction" style="-fx-background-color: #0693e3;" text="Log in" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                  <JFXButton maxWidth="300.0" onAction="#logInButtonOnAction" style="-fx-background-color: #0693e3;" text="Log in" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </JFXButton>
                   <GridPane GridPane.rowIndex="4">
@@ -130,12 +130,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton text="Update password" textFill="WHITE" GridPane.halignment="RIGHT">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="27.0" text="Forgot password ?" textFill="WHITE" GridPane.columnIndex="1">
+                        <JFXButton layoutX="10.0" layoutY="27.0" text="Forgot password ?" textFill="WHITE" GridPane.halignment="RIGHT">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
