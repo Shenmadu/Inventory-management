@@ -130,7 +130,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton layoutX="10.0" layoutY="27.0" text="Forgot password ?" textFill="WHITE" GridPane.halignment="RIGHT">
+                        <JFXButton fx:id="forgotPwd" layoutX="10.0" layoutY="27.0" onAction="#forgotPasswordOnAction" text="Forgot password ?" textFill="WHITE" GridPane.halignment="RIGHT">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

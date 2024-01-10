@@ -18,10 +18,7 @@ public class DashboardFormController {
     public JFXTextField userNameTxt;
     public JFXRadioButton user;
     public JFXRadioButton admin;
-
-
-
-
+    public JFXButton forgotPwd;
 
 
     public void logInButtonOnAction(ActionEvent actionEvent) {
@@ -60,5 +57,15 @@ public class DashboardFormController {
                }
            }
        }
+    }
+
+    public void forgotPasswordOnAction(ActionEvent actionEvent) {
+        Stage stage=(Stage) forgotPwd.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ForgotPassword.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
