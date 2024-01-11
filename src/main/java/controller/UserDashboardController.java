@@ -11,6 +11,7 @@ import java.io.IOException;
 public class UserDashboardController {
     public JFXButton backButton;
     public JFXButton updateBtn;
+    public JFXButton placeOrderBtn;
 
     public void backButtonOnAction(ActionEvent actionEvent) {
         Stage stage=(Stage) backButton.getScene().getWindow();
@@ -26,6 +27,16 @@ public class UserDashboardController {
         Stage stage=(Stage) updateBtn.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UpdatePassword.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void placeOrderButtonOnAction(ActionEvent actionEvent) {
+        Stage stage=(Stage) updateBtn.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);

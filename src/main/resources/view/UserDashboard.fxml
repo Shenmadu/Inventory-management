@@ -37,7 +37,7 @@
                   <Image url="@../img/user.png" />
                </image>
             </ImageView>
-            <JFXButton prefHeight="55.0" prefWidth="241.0" style="-fx-background-color: #3f51b5;" text="Place Order" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <JFXButton fx:id="placeOrderBtn" onAction="#placeOrderButtonOnAction" prefHeight="55.0" prefWidth="241.0" style="-fx-background-color: #3f51b5;" text="Place Order" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

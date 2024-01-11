@@ -96,22 +96,22 @@
                   <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXTextField fx:id="userNameTxt" focusColor="WHITE" maxWidth="300.0" style="-fx-text-fill: WHITE" unFocusColor="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <JFXTextField fx:id="userNameTxt" focusColor="WHITE" maxWidth="300.0" style="-fx-text-fill: WHITE" unFocusColor="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label text="User Name" textFill="WHITE" GridPane.halignment="CENTER">
+                  <Label text="User Name" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="359.0" layoutY="12.0" text="Password" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Label layoutX="359.0" layoutY="12.0" text="Password" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <JFXPasswordField fx:id="passwordTxt" focusColor="WHITE" maxWidth="300.0" style="-fx-text-fill: WHITE" unFocusColor="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <JFXPasswordField fx:id="passwordTxt" focusColor="WHITE" maxWidth="300.0" style="-fx-text-fill: WHITE" unFocusColor="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -139,7 +139,14 @@
                   </GridPane>
                </children>
             </GridPane>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+               <buttons>
+                  <JFXButton fx:id="lblTime" text="HH:mm:ss" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+               </buttons></ButtonBar>
          </children>
       </GridPane>
    </bottom>
