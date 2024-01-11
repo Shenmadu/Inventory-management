@@ -46,7 +46,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Create User Account" textFill="WHITE" GridPane.halignment="CENTER">
+                        <JFXButton fx:id="createAccountBtn" onAction="#CreateAccountBtnOnAction" prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Create Account" textFill="WHITE" GridPane.halignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -109,6 +109,11 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
+            <JFXButton fx:id="placeOrderBtn" onAction="#placeOrderButtonOnAction" prefHeight="55.0" prefWidth="241.0" style="-fx-background-color: #3f51b5;" text="Place Order" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
             </children>
         </GridPane>
     </center>

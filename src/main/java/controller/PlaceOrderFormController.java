@@ -15,6 +15,8 @@ public class PlaceOrderFormController {
     public Label lblDate;
     public JFXButton backBtn;
 
+
+
     public void initialize(){
         calculateDate();
     }
@@ -24,8 +26,11 @@ public class PlaceOrderFormController {
         lblDate.setText(String.valueOf(localDate));
     }
 
+
+
     public void backButtonOnAction(ActionEvent actionEvent) {
-        Stage stage=(Stage) backBtn.getScene().getWindow();
+        Stage stage = (Stage) backBtn.getScene().getWindow();
+
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
             stage.show();
