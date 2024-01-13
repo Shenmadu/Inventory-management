@@ -72,7 +72,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #2196f3;" text="Inventory" textFill="WHITE" GridPane.halignment="CENTER">
+                  <JFXButton fx:id="inventoryBtn" onAction="#inventoryBtnOnAction" prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #2196f3;" text="Inventory" textFill="WHITE" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

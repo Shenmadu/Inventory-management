@@ -13,6 +13,7 @@ public class UserDashboardController {
     public JFXButton updateBtn;
     public JFXButton placeOrderBtn;
     public JFXButton updateStatusBtn;
+    public JFXButton inventoryBtn;
 
     public void backButtonOnAction(ActionEvent actionEvent) {
         Stage stage=(Stage) backButton.getScene().getWindow();
@@ -48,6 +49,16 @@ public class UserDashboardController {
         Stage stage=(Stage) updateStatusBtn.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UpdateStatus.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void inventoryBtnOnAction(ActionEvent actionEvent) {
+        Stage stage=(Stage) inventoryBtn.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Inventory.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
