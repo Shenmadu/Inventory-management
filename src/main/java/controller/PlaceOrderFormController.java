@@ -6,8 +6,8 @@ import bo.custom.impl.CustomerBoImpl;
 import bo.custom.impl.OrderBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import dto.Customer;
-import dto.Orders;
+import dto.CustomerDto;
+import dto.OrderDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -83,7 +83,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
     @FXML
    public void placeButtonOnAction(ActionEvent event) {
         try {
-            Boolean isSaved = orderBo.saveOrder(new Orders(
+            Boolean isSaved = orderBo.saveOrder(new OrderDto(
                     orderIdTxt.getText(),
                     NumberTxt.getText(),
                     ItemTxt.getText(),
@@ -93,7 +93,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
                     "pending"
             ));
             if (isSaved) {
-                new Alert(Alert.AlertType.INFORMATION, "Customer Saved!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Order Placed succesfull!").show();
 
             }
         } catch (SQLException e) {
@@ -102,7 +102,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
             throw new RuntimeException(e);
         }
         try {
-            customerBo.saveCustomer(new Customer(
+            customerBo.saveCustomer(new CustomerDto(
                     NumberTxt.getText(),
                     nameTxt.getText(),
                     emailTxt.getText()

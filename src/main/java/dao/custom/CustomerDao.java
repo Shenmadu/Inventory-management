@@ -1,7 +1,7 @@
 package dao.custom;
 
 import dao.CrudDao;
-import entity.CustomerEntity;
+import entity.Customer;
 
-public interface CustomerDao extends CrudDao<CustomerEntity> {
+public interface CustomerDao extends CrudDao<Customer> {
 }

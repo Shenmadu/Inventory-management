@@ -1,14 +1,14 @@
 package bo.custom;
 
 import bo.SuperBo;
-import dto.Customer;
+import dto.CustomerDto;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public interface CustomerBo extends SuperBo {
-    Boolean saveCustomer(Customer dto) throws SQLException, ClassNotFoundException;
-    boolean updateCustomer(Customer dto) throws SQLException, ClassNotFoundException;
+    Boolean saveCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException;
+    boolean updateCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException;
     boolean deleteCustomer(String id) throws SQLException, ClassNotFoundException;
-    List<Customer> allCustomers() throws SQLException, ClassNotFoundException;
+    List<CustomerDto> allCustomers() throws SQLException, ClassNotFoundException;
 }

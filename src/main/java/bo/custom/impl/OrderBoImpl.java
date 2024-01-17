@@ -3,22 +3,20 @@ package bo.custom.impl;
 import bo.custom.OrderBo;
 import dao.custom.OrderDao;
 import dao.custom.impl.OrderDaoImpl;
-import dto.Orders;
-import entity.OrdersEntity;
+import dto.OrderDto;
 
-import javax.persistence.criteria.Order;
 import java.sql.SQLException;
 import java.util.List;
 
 public class OrderBoImpl implements OrderBo {
     private OrderDao orderDao=new OrderDaoImpl();
     @Override
-    public Boolean saveOrder(Orders dto) throws SQLException, ClassNotFoundException {
+    public Boolean saveOrder(OrderDto dto) throws SQLException, ClassNotFoundException {
         return orderDao.save(dto);
     }
 
     @Override
-    public boolean updateOrder(Orders dto) throws SQLException, ClassNotFoundException {
+    public boolean updateOrder(OrderDto dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -28,7 +26,7 @@ public class OrderBoImpl implements OrderBo {
     }
 
     @Override
-    public List<Orders> allOrders() throws SQLException, ClassNotFoundException {
+    public List<OrderDto> allOrders() throws SQLException, ClassNotFoundException {
         return null;
     }
 }

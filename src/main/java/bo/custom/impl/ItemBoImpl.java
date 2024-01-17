@@ -1,7 +1,7 @@
 package bo.custom.impl;
 
 import bo.custom.ItemBo;
-import dto.Item;
+import dto.ItemDto;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,12 +9,12 @@ import java.util.List;
 public class ItemBoImpl implements ItemBo {
 
     @Override
-    public Boolean saveItem(Item dto) throws SQLException, ClassNotFoundException {
+    public Boolean saveItem(ItemDto dto) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean updateItem(Item dto) throws SQLException, ClassNotFoundException {
+    public boolean updateItem(ItemDto dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -24,7 +24,7 @@ public class ItemBoImpl implements ItemBo {
     }
 
     @Override
-    public List<Item> allItems() throws SQLException, ClassNotFoundException {
+    public List<ItemDto> allItems() throws SQLException, ClassNotFoundException {
         return null;
     }
 }

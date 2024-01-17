@@ -2,7 +2,7 @@ package dao.custom.impl;
 
 import dao.custom.CustomerDao;
 import dao.util.HibernateUtil;
-import entity.CustomerEntity;
+import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
     @Override
-    public boolean save(CustomerEntity entity) throws SQLException, ClassNotFoundException {
+    public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         session.save(entity);
@@ -21,7 +21,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public boolean update(CustomerEntity entity) throws SQLException, ClassNotFoundException {
+    public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -31,7 +31,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public List<CustomerEntity> getAll() throws SQLException, ClassNotFoundException {
+    public List<Customer> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 }

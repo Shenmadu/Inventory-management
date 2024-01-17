@@ -1,7 +1,7 @@
 package bo.custom.impl;
 
 import bo.custom.UserBo;
-import dto.User;
+import dto.UserDto;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,12 +9,12 @@ import java.util.List;
 public class UserBoImpl implements UserBo {
 
     @Override
-    public Boolean saveUser(User dto) throws SQLException, ClassNotFoundException {
+    public Boolean saveUser(UserDto dto) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean updateUser(User dto) throws SQLException, ClassNotFoundException {
+    public boolean updateUser(UserDto dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -24,7 +24,7 @@ public class UserBoImpl implements UserBo {
     }
 
     @Override
-    public List<User> allUsers() throws SQLException, ClassNotFoundException {
+    public List<UserDto> allUsers() throws SQLException, ClassNotFoundException {
         return null;
     }
 }

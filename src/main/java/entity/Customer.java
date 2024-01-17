@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Entity
-public class CustomerEntity {
+public class Customer {
     @Id
     private String contactNumber;
     private String customerName;
@@ -21,9 +21,9 @@ public class CustomerEntity {
 
 
     @OneToMany(mappedBy = "customer")
-    private List<OrdersEntity> orders = new ArrayList<>();
+    private List<Orders> orders = new ArrayList<>();
 
-    public CustomerEntity(String contactNumber, String customerName, String email) {
+    public Customer(String contactNumber, String customerName, String email) {
         this.contactNumber = contactNumber;
         this.customerName = customerName;
         this.email = email;

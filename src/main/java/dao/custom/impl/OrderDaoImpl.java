@@ -2,9 +2,9 @@ package dao.custom.impl;
 
 import dao.custom.OrderDao;
 import dao.util.HibernateUtil;
-import dto.Orders;
-import entity.CustomerEntity;
-import entity.OrdersEntity;
+import dto.OrderDto;
+import entity.Customer;
+import entity.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -14,10 +14,10 @@ import java.util.List;
 public class OrderDaoImpl implements OrderDao {
 
     @Override
-    public boolean save(Orders dto) throws SQLException, ClassNotFoundException {
+    public boolean save(OrderDto dto) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        OrdersEntity entity = new OrdersEntity(
+        Orders entity = new Orders(
                 dto.getOrderId(),
                 dto.getItem(),
                 dto.getCatagory(),
@@ -26,7 +26,7 @@ public class OrderDaoImpl implements OrderDao {
                 dto.getStatus()
 
         );
-        entity.setCustomer(session.find(CustomerEntity.class,dto.getCustomerId()));
+        entity.setCustomer(session.find(Customer.class,dto.getCustomerId()));
         session.save(entity);
         transaction.commit();
         session.close();
@@ -36,7 +36,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean update(Orders entity) throws SQLException, ClassNotFoundException {
+    public boolean update(OrderDto entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -46,7 +46,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public List<Orders> getAll() throws SQLException, ClassNotFoundException {
+    public List<OrderDto> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 }

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 
 
-public class OrdersEntity{
+public class Orders {
     @Id
     private String orderId;
     private String item;
@@ -23,13 +23,13 @@ public class OrdersEntity{
 
     @ManyToOne
     @JoinColumn(name = "contactNumber")
-    private CustomerEntity customer;
+    private Customer customer;
 
 
 
 
 
-    public OrdersEntity(String orderId,String item, String catagory, String date, String description, String status) {
+    public Orders(String orderId, String item, String catagory, String date, String description, String status) {
         this.orderId = orderId;
         this.item = item;
         this.catagory = catagory;
