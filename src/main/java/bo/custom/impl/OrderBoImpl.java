@@ -14,15 +14,7 @@ public class OrderBoImpl implements OrderBo {
     private OrderDao orderDao=new OrderDaoImpl();
     @Override
     public Boolean saveOrder(Orders dto) throws SQLException, ClassNotFoundException {
-        return orderDao.save(new OrdersEntity(
-                dto.getOrderId(),
-                dto.getItem(),
-                dto.getCustomerId(),
-                dto.getCatagory(),
-                dto.getDate(),
-                dto.getDescription(),
-                dto.getStatus()
-        ));
+        return orderDao.save(dto);
     }
 
     @Override

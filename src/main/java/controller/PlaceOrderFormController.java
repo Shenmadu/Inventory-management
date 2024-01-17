@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class PlaceOrderFormController {
 
@@ -86,7 +88,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
                     NumberTxt.getText(),
                     ItemTxt.getText(),
                     catagoryTxt.getText(),
-                    lblDate.getText(),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     DescriptionTxt.getText(),
                     "pending"
             ));
