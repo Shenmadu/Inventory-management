@@ -49,4 +49,10 @@ public class OrderDaoImpl implements OrderDao {
     public List<OrderDto> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
+
+    @Override
+    public OrderDto lastOrder() throws SQLException, ClassNotFoundException {
+
+        return null;
+    }
 }

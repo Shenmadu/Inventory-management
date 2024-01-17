@@ -20,8 +20,8 @@ public class Customer {
     private String email;
 
 
-    @OneToMany(mappedBy = "customer")
-    private List<Orders> orders = new ArrayList<>();
+//    @OneToMany(mappedBy = "customer")
+//    private List<Orders> orders = new ArrayList<>();
 
     public Customer(String contactNumber, String customerName, String email) {
         this.contactNumber = contactNumber;
