@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,6 +20,9 @@ public class Item {
     private String itemCode;
     private String catagory;
     private String name;
+
+//    @OneToMany(mappedBy = "item")
+//    private List<OrderDetails> orderDetails = new ArrayList<>();
 
     public Item(String itemCode, String catagory, String name) {
         this.itemCode = itemCode;
