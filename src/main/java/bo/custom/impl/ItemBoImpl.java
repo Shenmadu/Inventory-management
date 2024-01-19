@@ -14,8 +14,13 @@ public class ItemBoImpl implements ItemBo {
     private ItemDao itemDao=new ItemDaoImpl();
 
     @Override
-    public Boolean saveItem(ItemDto dto) throws SQLException, ClassNotFoundException {
-        return null;
+    public Boolean saveItem(ItemDto itemDto) throws SQLException, ClassNotFoundException {
+        itemDao.save(new Item(
+                itemDto.getItemCode(),
+                itemDto.getCatagory(),
+                itemDto.getName()
+        ));
+        return true;
     }
 
     @Override

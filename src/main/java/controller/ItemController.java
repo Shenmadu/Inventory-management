@@ -25,6 +25,8 @@ import java.util.List;
 
 public class ItemController {
 
+    public JFXButton AddBtn;
+    public JFXButton removeBtn;
     @FXML
     private JFXButton backButton;
 
@@ -52,11 +54,7 @@ public class ItemController {
     @FXML
     private TreeTableColumn<?, ?> colElectroName;
 
-    @FXML
-    private JFXButton electricAddBtn;
 
-    @FXML
-    private JFXButton electroAddBtn;
 
     private ItemBo itemBo=new ItemBoImpl();
 
@@ -120,14 +118,19 @@ public class ItemController {
 
     }
 
-    @FXML
-    void electricAddBtnOnAction(ActionEvent event) {
 
+
+
+    public void AddBtnOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) AddBtn.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddItemForm.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @FXML
-    void electroAddBtnOnAction(ActionEvent event) {
-
+    public void removeBtnOnAction(ActionEvent actionEvent) {
     }
-
 }
