@@ -72,7 +72,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
         Stage stage = (Stage) backBtn.getScene().getWindow();
 
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -94,6 +94,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
             ));
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Order Placed succesfull!").show();
+                clearFields();
 
             }
         } catch (SQLException e) {
@@ -116,6 +117,18 @@ private CustomerBo customerBo=new CustomerBoImpl();
         }
 
 
+    }
+
+    private void clearFields() {
+        orderIdTxt.clear();
+        nameTxt.clear();
+        NumberTxt.clear();
+        emailTxt.clear();
+        catagoryTxt.clear();
+        DescriptionTxt.clear();
+        ItemTxt.clear();
+        partsTxt.clear();
+        priceTxt.clear();
     }
 
 }

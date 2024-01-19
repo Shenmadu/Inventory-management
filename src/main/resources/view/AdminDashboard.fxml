@@ -51,11 +51,11 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton layoutX="92.0" layoutY="35.0" prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Item" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </JFXButton>
+                  <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Reports" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
                     </children>
                 </GridPane>
                 <GridPane GridPane.rowIndex="2">
@@ -72,11 +72,11 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton layoutX="92.0" layoutY="34.0" prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Inventory" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </JFXButton>
+                  <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Update Status" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
                     </children>
                 </GridPane>
             <GridPane GridPane.rowIndex="3">
@@ -87,18 +87,6 @@
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
-               <children>
-                  <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Reports" textFill="WHITE" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="92.0" layoutY="34.0" prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Update Status" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </JFXButton>
-               </children>
             </GridPane>
                 <JFXButton fx:id="updateBtn" contentDisplay="GRAPHIC_ONLY" onAction="#updateButtonOnAction" prefHeight="64.0" prefWidth="76.0" GridPane.halignment="RIGHT">
                     <graphic>
@@ -109,11 +97,6 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-            <JFXButton fx:id="placeOrderBtn" onAction="#placeOrderButtonOnAction" prefHeight="55.0" prefWidth="241.0" style="-fx-background-color: #3f51b5;" text="Place Order" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
             </children>
         </GridPane>
     </center>
