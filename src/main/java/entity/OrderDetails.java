@@ -14,15 +14,17 @@ public class OrderDetails {
     @EmbeddedId
     private OrderDetailsKey id;
 
-//    @ManyToOne
-//    @MapsId("itemCode")
-//    @JoinColumn(name = "itemCode")
-//    Item item;
-//
-//    @ManyToOne
-//    @MapsId("orderId")
-//    @JoinColumn(name = "orderId")
-//    Orders orders;
+    @ManyToOne
+    @MapsId("orderId")
+    @JoinColumn(name = "orderId")
+    Orders orders;
+
+    @ManyToOne
+    @MapsId("itemCode")
+    @JoinColumn(name = "itemCode")
+    Item item;
+
+
 
     private double partsCost;
     private String Status;

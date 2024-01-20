@@ -4,6 +4,7 @@ import dao.custom.OrderDetailsDao;
 import dao.util.HibernateUtil;
 import dto.OrderDetailsDto;
 import entity.Item;
+
 import entity.OrderDetails;
 import entity.OrderDetailsKey;
 import entity.Orders;
@@ -20,22 +21,23 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         for (OrderDetailsDto dto : list) {
-            Orders order = session.get(Orders.class, dto.getOrderId());
-            Item item = session.get(Item.class, dto.getItemCode());
+            Orders orderid = session.get(Orders.class, dto.getOrderId());
+            Item itemcode = session.get(Item.class, dto.getItemCode());
 
-//            OrderDetails orderDetail = new OrderDetails(
-//                    new OrderDetailsKey(dto.getOrderId(), dto.getItemCode()),
-//                    item,
-//                    order,
-//                    dto.getPartsCost(),
-//                    dto.getStatus()
-//            );
+            OrderDetails orderDetail = new OrderDetails(
+                    new OrderDetailsKey(dto.getOrderId(), dto.getItemCode()),
+                    orderid,
+                    itemcode,
+                    dto.getPartsCost(),
+                    dto.getStatus()
+            );
 
-//            session.save(orderDetail);
+            session.save(orderDetail);
         }
 
         transaction.commit();
 
         return isDetailsSaved;
+
     }
 }

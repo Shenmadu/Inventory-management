@@ -7,6 +7,7 @@ import bo.custom.impl.OrderBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dto.CustomerDto;
+
 import dto.OrderDetailsDto;
 import dto.OrderDto;
 import javafx.event.ActionEvent;
@@ -85,28 +86,28 @@ private CustomerBo customerBo=new CustomerBoImpl();
 
     @FXML
    public void placeButtonOnAction(ActionEvent event) {
-//        List<OrderDetailsDto> list = new ArrayList<>();
-//        list.add(new OrderDetailsDto(
-//                orderIdTxt.getText(),
-//                ItemTxt.getText(),
-//                Double.parseDouble(priceTxt.getText()),
-//                "pending"
-//
-//
-//
-//        ));
+        List<OrderDetailsDto> list = new ArrayList<>();
+        list.add(new OrderDetailsDto(
+                orderIdTxt.getText(),
+                ItemTxt.getText(),
+                Double.parseDouble(priceTxt.getText()),
+                "pending"
+
+
+
+        ));
 
 
         try {
             Boolean isSaved = orderBo.saveOrder(new OrderDto(
-
                     orderIdTxt.getText(),
-                    NumberTxt.getText(),
                     ItemTxt.getText(),
                     catagoryTxt.getText(),
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     DescriptionTxt.getText(),
-                    "pending"
+                    "pending",
+                    NumberTxt.getText(),
+                    list
 
             ));
             if (isSaved) {

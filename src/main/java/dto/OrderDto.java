@@ -11,13 +11,13 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderDto {
     private String orderId;
-    private String customerId;
     private String item;
     private String catagory;
     private String date;
     private String description;
     private String status;
-//    private List<OrderDetailsDto> list;
+    private String customerId;
+    private List<OrderDetailsDto> list;
 
 
 }

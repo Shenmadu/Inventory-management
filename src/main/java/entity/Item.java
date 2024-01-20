@@ -21,8 +21,8 @@ public class Item {
     private String catagory;
     private String name;
 
-//    @OneToMany(mappedBy = "item")
-//    private List<OrderDetails> orderDetails = new ArrayList<>();
+    @OneToMany(mappedBy = "item")
+    private List<OrderDetails> orderDetails = new ArrayList<>();
 
     public Item(String itemCode, String catagory, String name) {
         this.itemCode = itemCode;
