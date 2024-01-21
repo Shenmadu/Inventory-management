@@ -1,12 +1,15 @@
 package bo.custom.impl;
 
 import bo.custom.UserBo;
+import dao.custom.UserDao;
+import dao.custom.impl.UserDaoImpl;
 import dto.UserDto;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class UserBoImpl implements UserBo {
+    UserDao userDao=new UserDaoImpl();
 
     @Override
     public Boolean saveUser(UserDto dto) throws SQLException, ClassNotFoundException {
@@ -26,6 +29,12 @@ public class UserBoImpl implements UserBo {
     @Override
     public List<UserDto> allUsers() throws SQLException, ClassNotFoundException {
         return null;
+    }
+
+    @Override
+    public UserDto getUser(String email) throws SQLException, ClassNotFoundException {
+
+        return userDao.getUser(email);
     }
 }
 

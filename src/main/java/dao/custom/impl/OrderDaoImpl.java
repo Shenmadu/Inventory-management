@@ -2,9 +2,9 @@ package dao.custom.impl;
 
 import dao.custom.OrderDao;
 import dao.util.HibernateUtil;
+import dto.OrderDetailsDto;
 import dto.OrderDto;
-import entity.Customer;
-import entity.Orders;
+import entity.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,7 +17,7 @@ public class OrderDaoImpl implements OrderDao {
     public boolean save(OrderDto dto) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        Orders entity = new Orders(
+        Orders orders = new Orders(
                 dto.getOrderId(),
                 dto.getItem(),
                 dto.getCatagory(),
@@ -26,8 +26,21 @@ public class OrderDaoImpl implements OrderDao {
                 dto.getStatus()
 
         );
-        entity.setCustomer(session.find(Customer.class,dto.getCustomerId()));
-        session.save(entity);
+        orders.setCustomer(session.find(Customer.class,dto.getCustomerId()));
+        session.save(orders);
+//
+//        List<OrderDetailsDto> list = dto.getList();
+//        for (OrderDetailsDto detailDto:list) {
+//            OrderDetails orderDetail = new OrderDetails(
+//                    new OrderDetailsKey(detailDto.getOrderId(), detailDto.getItemCode()),
+//                    orders,
+//                    session.find(Item.class, detailDto.getItemCode()),
+//                    detailDto.getPartsCost(),
+//                    detailDto.getStatus()
+//            );
+//            session.save(orderDetail);
+//        }
+
         transaction.commit();
         session.close();
 
