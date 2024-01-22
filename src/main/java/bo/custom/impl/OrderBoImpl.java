@@ -18,7 +18,23 @@ public class OrderBoImpl implements OrderBo {
 
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
+        try {
+            OrderDto dto = orderDao.lastOrder();
+            if(dto!=null){
+                String id=dto.getOrderId();
+                System.out.println(id);
+                int num=Integer.parseInt(id.split("[R]")[1]);
+                num++;
+                return String.format("ODR%04d",num);
+            }else{
+                return "ODR0001";
+            }
 
-        return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

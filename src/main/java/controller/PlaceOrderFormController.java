@@ -29,6 +29,7 @@ import java.util.List;
 public class PlaceOrderFormController {
 
     public JFXTextField orderIdTxt;
+    public Label lblOrderId;
     @FXML
     private Label lblDate;
 
@@ -64,6 +65,17 @@ private CustomerBo customerBo=new CustomerBoImpl();
 
     public void initialize(){
         calculateDate();
+        setOrderId();
+    }
+
+    private void setOrderId() {
+        try {
+            lblOrderId.setText(orderBo.generateId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void calculateDate() {
@@ -88,7 +100,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
    public void placeButtonOnAction(ActionEvent event) {
         List<OrderDetailsDto> list = new ArrayList<>();
         list.add(new OrderDetailsDto(
-                orderIdTxt.getText(),
+                lblOrderId.getText(),
                 ItemTxt.getText(),
                 Double.parseDouble(priceTxt.getText()),
                 "pending"
@@ -100,13 +112,13 @@ private CustomerBo customerBo=new CustomerBoImpl();
 
         try {
             Boolean isSaved = orderBo.saveOrder(new OrderDto(
-                    orderIdTxt.getText(),
+                    lblOrderId.getText(),
                     ItemTxt.getText(),
                     catagoryTxt.getText(),
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     DescriptionTxt.getText(),
                     "pending",
-                    NumberTxt.getText(),
+                    NumberTxt.getText().toString(),
                     list
 
             ));
@@ -124,7 +136,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
             customerBo.saveCustomer(new CustomerDto(
                     NumberTxt.getText(),
                     nameTxt.getText(),
-                    emailTxt.getText()
+                    emailTxt.getText().toString()
 
 
             ));
@@ -138,7 +150,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
     }
 
     private void clearFields() {
-        orderIdTxt.clear();
+
         nameTxt.clear();
         NumberTxt.clear();
         emailTxt.clear();

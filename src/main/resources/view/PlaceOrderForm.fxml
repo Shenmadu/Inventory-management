@@ -130,7 +130,11 @@
                         <Insets right="6.0" />
                      </GridPane.margin>
                   </JFXButton>
-                  <JFXTextField fx:id="orderIdTxt" maxWidth="200.0" GridPane.columnIndex="2" />
+                  <Label fx:id="lblOrderId" prefHeight="27.0" prefWidth="133.0" text="Label" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
          </children>

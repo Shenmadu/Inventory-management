@@ -2,12 +2,15 @@ package dao.custom.impl;
 
 import dao.custom.OrderDao;
 import dao.util.HibernateUtil;
+import db.DBConnection;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
 import entity.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -65,7 +68,21 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public OrderDto lastOrder() throws SQLException, ClassNotFoundException {
-
+        String sql="SELECT * FROM orders ORDER BY orderId DESC LIMIT 1";
+        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()){
+            return new OrderDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6),
+                    resultSet.getString(7),
+                    null
+            );
+        }
         return null;
     }
 }
