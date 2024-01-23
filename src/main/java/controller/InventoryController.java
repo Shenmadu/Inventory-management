@@ -65,7 +65,7 @@ public class InventoryController {
     private TreeTableColumn<?, ?> colpend2Option;
 
     @FXML
-    private JFXTreeTableView<?> processingTbl;
+    private JFXTreeTableView<InventoryTm> processingTbl;
 
     @FXML
     private TreeTableColumn<?, ?> colProCode;
@@ -94,6 +94,9 @@ public class InventoryController {
         colPendCatagory.setCellValueFactory(new TreeItemPropertyValueFactory<>("category"));
         colPendOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
+        colProCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemCode"));
+        colProCatagory.setCellValueFactory(new TreeItemPropertyValueFactory<>("category"));
+        colProOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
         loardPendingTable();
 

@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class OrderDaoImpl implements OrderDao {
 
     @Override
@@ -108,6 +109,32 @@ public class OrderDaoImpl implements OrderDao {
                     null
             );
         }
+        return null;
+    }
+
+    @Override
+    public OrderDto searchOrder(String orderId) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM orders WHERE orderId = ?";
+
+
+        try (PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql)) {
+            pstm.setString(1, orderId);
+            try (ResultSet resultSet = pstm.executeQuery()) {
+                if (resultSet.next()) {
+                    return new OrderDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6),
+                            resultSet.getString(7),
+                            null
+                    );
+                }
+            }
+        }
+
         return null;
     }
 }
