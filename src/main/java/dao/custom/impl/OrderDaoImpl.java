@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDaoImpl implements OrderDao {
@@ -58,12 +59,36 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public boolean delete(String value) throws SQLException, ClassNotFoundException {
-        return false;
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(session.find(Orders.class,value));
+        transaction.commit();
+        session.close();
+        return true;
+
     }
 
     @Override
     public List<OrderDto> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        String sql="SELECT * FROM orders";
+        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        ResultSet result = pstm.executeQuery();
+        List<OrderDto>list=new ArrayList<>();
+
+        while (result.next()){
+            list.add(new OrderDto(
+                    result.getString(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getString(4),
+                    result.getString(5),
+                    result.getString(6),
+                    result.getString(7),
+                    null
+            ));
+        }
+        return list;
+
     }
 
     @Override

@@ -22,7 +22,7 @@ public class OrderBoImpl implements OrderBo {
             OrderDto dto = orderDao.lastOrder();
             if(dto!=null){
                 String id=dto.getOrderId();
-                System.out.println(id);
+
                 int num=Integer.parseInt(id.split("[R]")[1]);
                 num++;
                 return String.format("ODR%04d",num);
@@ -36,5 +36,10 @@ public class OrderBoImpl implements OrderBo {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public boolean deleteOrder(String code) throws SQLException, ClassNotFoundException {
+        return orderDao.delete(code);
     }
 }
