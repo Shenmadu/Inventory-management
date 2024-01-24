@@ -63,6 +63,7 @@ public class PlaceOrderFormController {
 private OrderBo orderBo=new OrderBoImpl();
 private CustomerBo customerBo=new CustomerBoImpl();
 
+
     public void initialize(){
         calculateDate();
         setOrderId();
@@ -97,18 +98,14 @@ private CustomerBo customerBo=new CustomerBoImpl();
     }
 
     @FXML
-   public void placeButtonOnAction(ActionEvent event) {
+    public void placeButtonOnAction(ActionEvent event) {
         List<OrderDetailsDto> list = new ArrayList<>();
         list.add(new OrderDetailsDto(
                 lblOrderId.getText(),
                 ItemTxt.getText(),
                 Double.parseDouble(priceTxt.getText()),
                 "pending"
-
-
-
         ));
-
 
         try {
             Boolean isSaved = orderBo.saveOrder(new OrderDto(
@@ -118,36 +115,27 @@ private CustomerBo customerBo=new CustomerBoImpl();
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     DescriptionTxt.getText(),
                     "processing",
-                    NumberTxt.getText().toString(),
-                    list
-
-            ));
-            if (isSaved) {
-                new Alert(Alert.AlertType.INFORMATION, "Order Placed succesfull!").show();
-                clearFields();
-
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            customerBo.saveCustomer(new CustomerDto(
                     NumberTxt.getText(),
-                    nameTxt.getText(),
-                    emailTxt.getText().toString()
-
-
+                    list
             ));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+
+            if (isSaved) {
+
+                customerBo.saveCustomer(new CustomerDto(
+                        NumberTxt.getText(),
+                        nameTxt.getText(),
+                        emailTxt.getText().toString()
+                ));
+
+                new Alert(Alert.AlertType.INFORMATION, "Order Placed successfully!").show();
+                clearFields();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+
             throw new RuntimeException(e);
         }
-
-
     }
+
 
     private void clearFields() {
 

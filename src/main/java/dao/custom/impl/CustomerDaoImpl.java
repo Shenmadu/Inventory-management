@@ -12,11 +12,11 @@ import java.util.List;
 public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
-//        Session session = HibernateUtil.getSession();
-//        Transaction transaction = session.beginTransaction();
-//        session.save(entity);
-//        transaction.commit();
-//        session.close();
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(entity);
+        transaction.commit();
+        session.close();
         return true;
     }
 
