@@ -99,46 +99,49 @@ private CustomerBo customerBo=new CustomerBoImpl();
 
     @FXML
     public void placeButtonOnAction(ActionEvent event) {
-        List<OrderDetailsDto> list = new ArrayList<>();
-        list.add(new OrderDetailsDto(
-                lblOrderId.getText(),
-                ItemTxt.getText(),
-                Double.parseDouble(priceTxt.getText()),
-                "pending"
-        ));
-
-        try {
-            Boolean isSaved = orderBo.saveOrder(new OrderDto(
+        if (validateNumber()==true) {
+            List<OrderDetailsDto> list = new ArrayList<>();
+            list.add(new OrderDetailsDto(
                     lblOrderId.getText(),
                     ItemTxt.getText(),
-                    catagoryTxt.getText(),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
-                    DescriptionTxt.getText(),
-                    "pending",
-                    NumberTxt.getText(),
-                    list
+                    Double.parseDouble(priceTxt.getText()),
+                    "pending"
             ));
 
-            if (isSaved) {
-
-                customerBo.saveCustomer(new CustomerDto(
+            try {
+                Boolean isSaved = orderBo.saveOrder(new OrderDto(
+                        lblOrderId.getText(),
+                        ItemTxt.getText(),
+                        catagoryTxt.getText(),
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                        DescriptionTxt.getText(),
+                        "pending",
                         NumberTxt.getText(),
-                        nameTxt.getText(),
-                        emailTxt.getText().toString()
+                        list
                 ));
 
-                new Alert(Alert.AlertType.INFORMATION, "Order Placed successfully!").show();
-                clearFields();
-            }
-        } catch (SQLException | ClassNotFoundException e) {
+                if (isSaved) {
 
-            throw new RuntimeException(e);
+                    customerBo.saveCustomer(new CustomerDto(
+                            NumberTxt.getText(),
+                            nameTxt.getText(),
+                            emailTxt.getText().toString()
+                    ));
+
+                    new Alert(Alert.AlertType.INFORMATION, "Order Placed successfully!").show();
+                    clearFields();
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+
+                throw new RuntimeException(e);
+            }
+        }else{
+            new Alert(Alert.AlertType.INFORMATION, "Invalid Number").show();
         }
     }
 
 
     private void clearFields() {
-
         nameTxt.clear();
         NumberTxt.clear();
         emailTxt.clear();
@@ -147,6 +150,18 @@ private CustomerBo customerBo=new CustomerBoImpl();
         ItemTxt.clear();
         partsTxt.clear();
         priceTxt.clear();
+    }
+    private boolean validateNumber(){
+        String number = NumberTxt.getText();
+        if (!number.matches("\\d+")) {
+            return false;
+        }
+        if (number.length() != 10 || !number.startsWith("0")) {
+            return false;
+        }
+        return true;
+
+
     }
 
 }
