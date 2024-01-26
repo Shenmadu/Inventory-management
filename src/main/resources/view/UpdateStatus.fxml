@@ -84,12 +84,12 @@
                   <JFXTextField fx:id="dateTxt" layoutX="131.0" layoutY="160.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
-            <JFXButton prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #9575cd;" text="Update Status" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <JFXButton fx:id="updateBtn" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #9575cd;" text="Update Status" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="490.0" layoutY="409.0" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #eb144c;" text="Add Parts" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <JFXButton fx:id="addPartsBtn" layoutX="490.0" layoutY="409.0" onAction="#addPartsBtnOnAction" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #eb144c;" text="Add Parts" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

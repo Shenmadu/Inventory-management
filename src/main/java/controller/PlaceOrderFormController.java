@@ -114,7 +114,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
                     catagoryTxt.getText(),
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                     DescriptionTxt.getText(),
-                    "processing",
+                    "pending",
                     NumberTxt.getText(),
                     list
             ));
