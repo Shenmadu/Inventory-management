@@ -33,6 +33,14 @@ public class UserReportController {
     }
 
     public void searchOrderBtnOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) searchCustomerBtn.getScene().getWindow();
+
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderDetails.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void allCustomerBtnOnAction(ActionEvent actionEvent) {

@@ -140,7 +140,6 @@ private CustomerBo customerBo=new CustomerBoImpl();
         }
     }
 
-
     private void clearFields() {
         nameTxt.clear();
         NumberTxt.clear();
