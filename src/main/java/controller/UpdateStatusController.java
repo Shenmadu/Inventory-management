@@ -27,10 +27,12 @@ public class UpdateStatusController {
     public JFXTextField dateTxt;
     public JFXButton updateBtn;
     public JFXButton addPartsBtn;
+    public JFXButton billBtn;
     OrderDao orderDao=new OrderDaoImpl();
 
     public void initialize(){
         addPartsBtn.setVisible(false);
+        billBtn.setVisible(false);
     }
 
 
@@ -69,6 +71,8 @@ public class UpdateStatusController {
         }
         if(statusTxt.getText().equals("processing")){
             addPartsBtn.setVisible(true);
+        } else if (statusTxt.getText().equals("closed")) {
+            billBtn.setVisible(true);
         }
 
     }
@@ -98,6 +102,17 @@ public class UpdateStatusController {
 
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddParts.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void billBtnOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) billBtn.getScene().getWindow();
+
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderBillForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);

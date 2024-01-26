@@ -97,6 +97,14 @@
                   <Insets right="150.0" />
                </GridPane.margin>
             </JFXButton>
+            <JFXButton fx:id="billBtn" layoutX="512.0" layoutY="446.0" onAction="#billBtnOnAction" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #9575cd;" text="Bill" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </JFXButton>
          </children>
       </GridPane>
    </center>
