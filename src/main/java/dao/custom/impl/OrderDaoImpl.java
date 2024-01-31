@@ -31,20 +31,22 @@ public class OrderDaoImpl implements OrderDao {
                 dto.getStatus()
 
         );
-        orders.setCustomer(session.find(Customer.class,dto.getCustomerId()));
+
+        orders.setCustomer(session.find(Customer.class,dto.getContactNumber()));
+
         session.save(orders);
-//
-//        List<OrderDetailsDto> list = dto.getList();
-//        for (OrderDetailsDto detailDto:list) {
-//            OrderDetails orderDetail = new OrderDetails(
-//                    new OrderDetailsKey(detailDto.getOrderId(), detailDto.getItemCode()),
-//                    orders,
-//                    session.find(Item.class, detailDto.getItemCode()),
-//                    detailDto.getPartsCost(),
-//                    detailDto.getStatus()
-//            );
-//            session.save(orderDetail);
-//        }
+
+        List<OrderDetailsDto> list = dto.getList();
+        for (OrderDetailsDto detailDto:list) {
+            OrderDetails orderDetail = new OrderDetails(
+                    new OrderDetailsKey(detailDto.getOrderId(),detailDto.getItemCode()),
+                    orders,
+                    session.find(Item.class, detailDto.getItemCode()),
+                    detailDto.getPartsCost(),
+                    detailDto.getStatus()
+            );
+            session.save(orderDetail);
+        }
 
         transaction.commit();
         session.close();

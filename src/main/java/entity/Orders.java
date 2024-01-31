@@ -10,6 +10,7 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @Entity
+@AllArgsConstructor
 
 
 public class Orders {
@@ -22,7 +23,7 @@ public class Orders {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "contactNumber")
+    @JoinColumn(name ="contactNumber")
     private Customer customer;
 
 

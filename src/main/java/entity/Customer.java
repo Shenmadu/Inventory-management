@@ -23,6 +23,10 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Orders> orders = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "orders")
+    private List<OrderDetails> orderDetails = new ArrayList<>();
+
     public Customer(String contactNumber, String customerName, String email) {
         this.contactNumber = contactNumber;
         this.customerName = customerName;

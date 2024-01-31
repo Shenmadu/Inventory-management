@@ -24,6 +24,7 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
             Orders orderid = session.get(Orders.class, dto.getOrderId());
             Item itemcode = session.get(Item.class, dto.getItemCode());
 
+
             OrderDetails orderDetail = new OrderDetails(
                     new OrderDetailsKey(dto.getOrderId(), dto.getItemCode()),
                     orderid,
