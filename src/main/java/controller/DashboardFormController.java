@@ -31,6 +31,7 @@ public class DashboardFormController {
     public JFXRadioButton admin;
     public JFXButton forgotPwd;
     public JFXButton lblTime;
+    public JFXButton registerBtn;
 
     UserBo userBo=new UserBoImpl();
     public void initialize(){
@@ -117,6 +118,16 @@ public class DashboardFormController {
         Stage stage=(Stage) forgotPwd.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ForgotPassword.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void registerBtnOnAction(ActionEvent actionEvent) {
+        Stage stage=(Stage) registerBtn.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CreateAccountForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -4,6 +4,7 @@ import bo.custom.OrderBo;
 import dao.custom.OrderDao;
 import dao.custom.impl.OrderDaoImpl;
 import dto.OrderDto;
+import entity.Orders;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,7 +20,8 @@ public class OrderBoImpl implements OrderBo {
     @Override
     public String generateId() throws SQLException, ClassNotFoundException {
         try {
-            OrderDto dto = orderDao.lastOrder();
+//            OrderDto dto = orderDao.lastOrder();
+            Orders dto = orderDao.getLast();
             if(dto!=null){
                 String id=dto.getOrderId();
 

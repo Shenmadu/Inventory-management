@@ -15,7 +15,7 @@ public class VerificationNewPasswordContoller {
     public void backButtonOnAction(ActionEvent actionEvent) {
         Stage stage=(Stage) backButton.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/Verification.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);

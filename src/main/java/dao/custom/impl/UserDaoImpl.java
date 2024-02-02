@@ -16,7 +16,13 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
     @Override
     public boolean save(User entity) throws SQLException, ClassNotFoundException {
-        return false;
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(entity);
+        transaction.commit();
+        session.close();
+
+        return true;
     }
 
     @Override

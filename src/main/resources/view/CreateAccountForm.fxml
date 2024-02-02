@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -39,7 +40,7 @@
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Label>
-                <JFXButton maxWidth="200.0" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #0693e3;" text="Create" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                <JFXButton fx:id="createBtn" maxWidth="200.0" onAction="#createBtnOnAction" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #0693e3;" text="Create" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -62,7 +63,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField maxWidth="300.0" GridPane.columnIndex="2" />
+                  <JFXTextField fx:id="emailTxt" maxWidth="300.0" GridPane.columnIndex="2" />
                   <Label prefHeight="27.0" prefWidth="201.0" text="Create Password:" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -78,9 +79,9 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField layoutX="346.0" layoutY="40.0" maxWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <JFXTextField layoutX="346.0" layoutY="124.0" maxWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <JFXTextField layoutX="346.0" layoutY="208.0" maxWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="createPwdtxt" layoutX="346.0" layoutY="40.0" maxWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="retypePwdTxt" layoutX="346.0" layoutY="124.0" maxWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <JFXComboBox fx:id="cmbCategory" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             </children>

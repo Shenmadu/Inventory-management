@@ -6,8 +6,10 @@ import db.DBConnection;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
 import entity.*;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,25 +96,8 @@ public class OrderDaoImpl implements OrderDao {
 
     }
 
-    @Override
-    public OrderDto lastOrder() throws SQLException, ClassNotFoundException {
-        String sql="SELECT * FROM orders ORDER BY orderId DESC LIMIT 1";
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if(resultSet.next()){
-            return new OrderDto(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(5),
-                    resultSet.getString(6),
-                    resultSet.getString(7),
-                    null
-            );
-        }
-        return null;
-    }
+
+
 
     @Override
     public OrderDto searchOrder(String orderId) throws SQLException, ClassNotFoundException {
@@ -138,5 +123,33 @@ public class OrderDaoImpl implements OrderDao {
         }
 
         return null;
+    }
+
+    @Override
+    public Orders getLast() throws SQLException, ClassNotFoundException {
+        try (Session session = HibernateUtil.getSession()) {
+            Transaction transaction = session.beginTransaction();
+
+
+            String hql = "FROM Orders ORDER BY id DESC";
+            Query<Orders> query = session.createQuery(hql, Orders.class);
+            query.setMaxResults(1);
+
+            List<Orders> orders = query.list();
+            transaction.commit();
+
+
+            return !orders.isEmpty() ? new Orders(
+                    orders.get(0).getOrderId(),
+                    orders.get(0).getItem(),
+                    orders.get(0).getCatagory(),
+                    orders.get(0).getDate(),
+                    orders.get(0).getDescription(),
+                    orders.get(0).getStatus()
+            ) : null;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

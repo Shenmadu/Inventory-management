@@ -46,33 +46,27 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <JFXButton fx:id="createAccountBtn" onAction="#CreateAccountBtnOnAction" prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Create Account" textFill="WHITE" GridPane.halignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </JFXButton>
                   <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Reports" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </JFXButton>
+                        <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Register New User" textFill="WHITE" GridPane.halignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </JFXButton>
                     </children>
                 </GridPane>
                 <GridPane GridPane.rowIndex="2">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Register New User" textFill="WHITE" GridPane.halignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </JFXButton>
-                  <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Update Status" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  <JFXButton prefHeight="46.0" prefWidth="241.0" style="-fx-background-color: #0288d1;" text="Update Status" textFill="WHITE" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

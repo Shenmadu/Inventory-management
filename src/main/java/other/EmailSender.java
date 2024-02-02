@@ -1,10 +1,13 @@
-package dto;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+package other;
+
+import javafx.scene.control.Alert;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class EmailSender {
 
@@ -25,14 +28,15 @@ public class EmailSender {
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(emailProperties.getProperty("email.username")));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+
+            message.setFrom(new InternetAddress(emailProperties.getProperty("email.username")));//reciver address
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));//sender address
             message.setSubject(subject);
-            message.setText(body);
+            message.setText(body);//email body
 
             Transport.send(message);
 
-            System.out.println("Email sent successfully!");
+            new Alert(Alert.AlertType.INFORMATION, "Please check your email").show();
 
         } catch (MessagingException e) {
             e.printStackTrace();
