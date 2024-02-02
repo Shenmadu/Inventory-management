@@ -6,10 +6,16 @@ import dto.ItemDto;
 import dto.UserDto;
 import entity.Item;
 import entity.User;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -60,4 +66,34 @@ public class UserDaoImpl implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public boolean updatePassword(String email, String password) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        User user = session.get(User.class, email);
+
+        if (user != null) {
+            user.setPassword(password);
+            session.update(user);
+            transaction.commit();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    @Override
+    public User searchUser(String email) {//create query
+        try (Session session = HibernateUtil.getSession()) {
+            Criteria criteria = session.createCriteria(User.class);
+            criteria.add(Restrictions.eq("email", email));
+            return (User) ((Criteria) criteria).uniqueResult();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

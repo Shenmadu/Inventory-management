@@ -110,6 +110,8 @@ public class DashboardFormController {
             }
 
 
+        }else{
+            new Alert(Alert.AlertType.ERROR, "Please select your account type").show();
         }
     }
 

@@ -50,5 +50,23 @@ public class UserBoImpl implements UserBo {
         list.add("User");
         return list;
     }
+
+    @Override
+    public boolean updatePassword(String email, String password) throws SQLException, ClassNotFoundException {
+        return userDao.updatePassword(email,password);
+    }
+
+    @Override
+    public UserDto searchUser(String email){
+        User user = userDao.searchUser(email);
+        if(user!=null){
+        return new UserDto(
+                user.getEmail(),
+                user.getPassword(),
+                user.getType()
+        );
+        }
+        return null;
+    }
 }
 
