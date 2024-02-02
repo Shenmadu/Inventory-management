@@ -40,6 +40,7 @@ public class EmailSender {
         }
     }
 
+
     private static Properties loadProperties() {
         Properties properties = new Properties();
         try (InputStream input = EmailSender.class.getResourceAsStream(PROPERTIES_FILE)) {
