@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -66,7 +67,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label text="000.00">
+                  <Label fx:id="lblNetCost" text="000.00">
                      <GridPane.margin>
                         <Insets left="85.0" />
                      </GridPane.margin>
@@ -82,6 +83,14 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </JFXButton>
+                  <JFXButton fx:id="calculateBtn" layoutX="644.0" layoutY="15.0" onAction="#calculateBtnOnAction" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #9575cd;" text="Calculate" textFill="WHITE" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="150.0" />
+                     </GridPane.margin>
+                  </JFXButton>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -94,7 +103,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Item Code :">
+                  <Label text="OrderId">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -104,16 +113,12 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label text="EC0000" GridPane.columnIndex="1">
+                  <Label text="ODR0000" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="134.0" layoutY="18.0" text="000.00" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
+                  <JFXTextField fx:id="repairCostTxt" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>

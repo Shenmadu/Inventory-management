@@ -115,8 +115,8 @@ private CustomerBo customerBo=new CustomerBoImpl();
             list.add(new OrderDetailsDto(
                     lblOrderId.getText(),
                     ItemTxt.getText(),
-                    Double.parseDouble(priceTxt.getText()),
-                    "pending"
+                    Double.parseDouble(priceTxt.getText())
+
             ));
 
             try {

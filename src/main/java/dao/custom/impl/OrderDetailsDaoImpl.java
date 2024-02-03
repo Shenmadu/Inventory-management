@@ -29,8 +29,8 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
                     new OrderDetailsKey(dto.getOrderId(), dto.getItemCode()),
                     orderid,
                     itemcode,
-                    dto.getPartsCost(),
-                    dto.getStatus()
+                    dto.getPartsCost()
+
             );
 
             session.save(orderDetail);

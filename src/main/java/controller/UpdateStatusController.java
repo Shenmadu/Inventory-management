@@ -1,5 +1,7 @@
 package controller;
 
+import bo.custom.OrderBo;
+import bo.custom.impl.OrderBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dao.custom.OrderDao;
@@ -16,6 +18,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class UpdateStatusController {
 
@@ -29,15 +32,12 @@ public class UpdateStatusController {
     public JFXButton addPartsBtn;
     public JFXButton billBtn;
     OrderDao orderDao=new OrderDaoImpl();
+    OrderBo orderBo=new OrderBoImpl();
 
     public void initialize(){
         addPartsBtn.setVisible(false);
         billBtn.setVisible(false);
     }
-
-
-
-
     public void backButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) backButton.getScene().getWindow();
 
@@ -69,33 +69,13 @@ public class UpdateStatusController {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        if(statusTxt.getText().equals("processing")){
+        if (statusTxt.getText().equals("Processing")){
             addPartsBtn.setVisible(true);
-        } else if (statusTxt.getText().equals("closed")) {
+        }  else  if (statusTxt.getText().equals("Closed")){
             billBtn.setVisible(true);
         }
 
-    }
-
-    public void updateBtnOnAction(ActionEvent actionEvent) {
-        if(statusTxt.getText().equals("pending")){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Set status Processing");
-            alert.show();
-
-        } else if (statusTxt.getText().equals("processing")){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Set status Completed");
-            alert.show();
-
-        }else{
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Set status Closed");
-            alert.show();
-
-        }
-
-    }
+}
 
     public void addPartsBtnOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) addPartsBtn.getScene().getWindow();
@@ -118,4 +98,32 @@ public class UpdateStatusController {
             throw new RuntimeException(e);
         }
     }
+    public void updateBtnOnAction(ActionEvent actionEvent) {
+        String currentStatus = statusTxt.getText();
+        String newStatus = "";
+
+        if (currentStatus.equals("pending")) {
+            newStatus = "Processing";
+            addPartsBtn.setVisible(true);
+        } else if (currentStatus.equals("Processing")) {
+            newStatus = "Completed";
+        } else  if (currentStatus.equals("Completed"))  {
+            newStatus = "Closed";
+            billBtn.setVisible(true);
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Set status to " + newStatus);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            orderBo.updateStatus(idTxt.getText(),newStatus);
+            statusTxt.setText(newStatus);
+
+        } else {
+
+        }
+    }
+
 }

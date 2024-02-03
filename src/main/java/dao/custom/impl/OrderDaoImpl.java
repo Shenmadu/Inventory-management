@@ -43,8 +43,8 @@ public class OrderDaoImpl implements OrderDao {
                     new OrderDetailsKey(detailDto.getOrderId(),detailDto.getItemCode()),
                     orders,
                     session.find(Item.class, detailDto.getItemCode()),
-                    detailDto.getPartsCost(),
-                    detailDto.getStatus()
+                    detailDto.getPartsCost()
+
             );
             session.save(orderDetail);
         }
@@ -150,5 +150,20 @@ public class OrderDaoImpl implements OrderDao {
             e.printStackTrace();
             return null;
         }
+    }
+    public boolean updateStatus(String orderId, String status) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Orders order = session.get(Orders.class, orderId);
+
+        if (order != null) {
+            order.setStatus(status);
+            session.update(order);
+            transaction.commit();
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

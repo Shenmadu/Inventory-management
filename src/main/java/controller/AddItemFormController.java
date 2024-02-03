@@ -3,6 +3,7 @@ package controller;
 import bo.custom.ItemBo;
 import bo.custom.impl.ItemBoImpl;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.ItemDto;
 
@@ -22,11 +23,17 @@ public class AddItemFormController {
     public JFXTextField itmCodeTxt;
     public JFXTextField itmNameTxt;
     public JFXTextField itmCatagoryTxt;
+    public JFXComboBox cmbCat;
 
     ItemBo itemBo=new ItemBoImpl();
 
+    public void initialize(){
+        setItemType();
+    }
 
-
+    private void setItemType() {
+       cmbCat.setItems(itemBo.getItemType());
+    }
 
 
     public void backButtonOnAction(ActionEvent actionEvent) {
@@ -43,7 +50,7 @@ public class AddItemFormController {
         try {
             Boolean saved = itemBo.saveItem(new ItemDto(
                             itmCodeTxt.getText(),
-                            itmCatagoryTxt.getText(),
+                            cmbCat.getValue().toString(),
                             itmNameTxt.getText()
 
             ));
@@ -62,7 +69,6 @@ public class AddItemFormController {
 
     private void clearFields() {
         itmCodeTxt.clear();
-        itmCatagoryTxt.clear();
         itmNameTxt.clear();
     }
 }

@@ -5,6 +5,8 @@ import dao.custom.ItemDao;
 import dao.custom.impl.ItemDaoImpl;
 import dto.ItemDto;
 import entity.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,6 +51,12 @@ public class ItemBoImpl implements ItemBo {
                     item.getName()
             ));
         }
+        return list;
+    }
+    public ObservableList<String> getItemType() {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("Electrical");
+        list.add("Electronic");
         return list;
     }
 }

@@ -43,7 +43,7 @@ public class ForgotPasswordController {
            UserDto userDto = userBo.searchUser(emailTxt.getText());
 
         if(userDto != null) {
-//            if (!emailTxt.getText().isEmpty()) {
+
                 String to = emailTxt.getText();
                 String subject = "OTP verification";
 

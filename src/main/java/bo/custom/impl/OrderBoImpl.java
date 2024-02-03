@@ -44,4 +44,9 @@ public class OrderBoImpl implements OrderBo {
     public boolean deleteOrder(String code) throws SQLException, ClassNotFoundException {
         return orderDao.delete(code);
     }
+
+    @Override
+    public boolean updateStatus(String orderId, String status) {
+        return orderDao.updateStatus(orderId,status);
+    }
 }
