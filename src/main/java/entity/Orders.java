@@ -23,7 +23,7 @@ public class Orders {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name ="contactNumber")
+    @JoinColumn(name ="customerId")
     private Customer customer;
 
 

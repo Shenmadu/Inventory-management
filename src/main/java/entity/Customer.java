@@ -11,9 +11,10 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Entity
-
+@AllArgsConstructor
 public class Customer {
     @Id
+    private String customerId;
     private String contactNumber;
     private String customerName;
     private String email;
@@ -31,5 +32,12 @@ public class Customer {
         this.customerName = customerName;
         this.email = email;
 
+    }
+
+    public Customer(String customerId, String contactNumber, String customerName, String email) {
+        this.customerId = customerId;
+        this.contactNumber = contactNumber;
+        this.customerName = customerName;
+        this.email = email;
     }
 }

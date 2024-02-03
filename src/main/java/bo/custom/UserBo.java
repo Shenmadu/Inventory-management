@@ -15,7 +15,7 @@ public interface UserBo extends SuperBo {
     List<UserDto> allUsers() throws SQLException, ClassNotFoundException;
     UserDto getUser(String email) throws SQLException, ClassNotFoundException;
     ObservableList<String> getUserType();
-    public boolean updatePassword(String email, String password)throws SQLException, ClassNotFoundException;
+    boolean updatePassword(String email, String password)throws SQLException, ClassNotFoundException;
     UserDto searchUser(String email);
 
 

@@ -10,6 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class CustomerDto {
+    private String customerId;
     private String contactNumber;
     private String customerName;
     private String email;

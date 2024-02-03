@@ -31,10 +31,9 @@ public class OrderDaoImpl implements OrderDao {
                 dto.getDate(),
                 dto.getDescription(),
                 dto.getStatus()
-
         );
 
-        orders.setCustomer(session.find(Customer.class,dto.getContactNumber()));
+        orders.setCustomer(session.find(Customer.class,dto.getCustomerId()));
 
         session.save(orders);
 

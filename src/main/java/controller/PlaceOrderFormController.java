@@ -30,6 +30,7 @@ public class PlaceOrderFormController {
 
     public JFXTextField orderIdTxt;
     public Label lblOrderId;
+    public Label lblCustId;
     @FXML
     private Label lblDate;
 
@@ -67,11 +68,21 @@ private CustomerBo customerBo=new CustomerBoImpl();
     public void initialize(){
         calculateDate();
         setOrderId();
+        setCustomerId();
     }
 
     private void setOrderId() {
         try {
             lblOrderId.setText(orderBo.generateId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void setCustomerId() {
+        try {
+            lblCustId.setText(customerBo.generateId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -116,13 +127,14 @@ private CustomerBo customerBo=new CustomerBoImpl();
                         LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                         DescriptionTxt.getText(),
                         "pending",
-                        NumberTxt.getText(),
+                        lblCustId.getText(),
                         list
                 ));
 
                 if (isSaved) {
 
                     customerBo.saveCustomer(new CustomerDto(
+                            lblCustId.getText(),
                             NumberTxt.getText(),
                             nameTxt.getText(),
                             emailTxt.getText().toString()

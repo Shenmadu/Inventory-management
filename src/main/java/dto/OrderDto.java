@@ -18,7 +18,7 @@ public class OrderDto {
     private String date;
     private String description;
     private String status;
-    private String contactNumber;
+    private String customerId;
     private List<OrderDetailsDto> list;
 
 
