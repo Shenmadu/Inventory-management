@@ -11,6 +11,7 @@ import javax.persistence.*;
 @ToString
 @Entity
 public class OrderDetails {
+
     @EmbeddedId
     private OrderDetailsKey id;
 
@@ -20,15 +21,14 @@ public class OrderDetails {
     Orders orders;
 
     @ManyToOne
-    @MapsId("itemCode")
-    @JoinColumn(name = "itemCode")
+    @MapsId("itemCode")//
+    @JoinColumn(name = "itemCode")//
     Item item;
 
 
 
     private double partsCost;
     private String Status;
-
 
 
 }
