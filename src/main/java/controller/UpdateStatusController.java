@@ -54,9 +54,9 @@ public class UpdateStatusController {
             OrderDto orderDto = orderDao.searchOrder(idTxt.getText());
 
             if (orderDto!=null){
-                codeTxt.setText(orderDto.getItem());
+                codeTxt.setText(orderDto.getDescription());
                 statusTxt.setText(orderDto.getStatus());
-                dateTxt.setText(orderDto.getDate());
+                dateTxt.setText(orderDto.getCatagory());
 
             }else {
                 new Alert(Alert.AlertType.INFORMATION, "Invalid Order Id!").show();
@@ -81,7 +81,13 @@ public class UpdateStatusController {
         Stage stage = (Stage) addPartsBtn.getScene().getWindow();
 
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AddParts.fxml"))));
+            FXMLLoader loader =new FXMLLoader(getClass().getResource("/view/AddParts.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            AddPartsContoller partsContoller=loader.getController();
+            partsContoller.setOrderId(idTxt.getText());
+            partsContoller.setItemcode(codeTxt.getText());
+            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -90,10 +96,16 @@ public class UpdateStatusController {
 
     public void billBtnOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) billBtn.getScene().getWindow();
-
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderBillForm.fxml"))));
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/view/OrderBillForm.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            OrderBillContoller billContoller=loader.getController();
+            billContoller.setOrderId(idTxt.getText());
+            billContoller.setItemcode(codeTxt.getText());
+            stage.setScene(scene);
             stage.show();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -120,8 +132,6 @@ public class UpdateStatusController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             orderBo.updateStatus(idTxt.getText(),newStatus);
             statusTxt.setText(newStatus);
-
-        } else {
 
         }
     }

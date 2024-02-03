@@ -12,6 +12,7 @@ public class OrderDetailsDto {
     private double partsCost;
 
 
-
-
+    public OrderDetailsDto(double partsCost) {
+        this.partsCost = partsCost;
+    }
 }

@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Entity
 public class OrderDetails {
 
+
     @EmbeddedId
     private OrderDetailsKey id;
 
@@ -29,6 +30,9 @@ public class OrderDetails {
 
     private double partsCost;
 
+    public OrderDetails(double partsCost) {
+        this.partsCost = partsCost;
+    }
 
 
 }
