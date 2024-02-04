@@ -34,15 +34,11 @@ public class OrderBillContoller {
         this.itemcode = itemcode;
     }
 
-    public void initialize(){
-        lblOrderId.setText(orderId);
-        lblItemCode.setText(itemcode);
-   }
-
-
     private void loardPartcost() {
         try {
-            lblPartCost.setText(dao.getOrder(orderId,itemcode).toString());
+            String part= String.valueOf(dao.getOrder(orderId,itemcode).getPartsCost());
+            lblPartCost.setText(part);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -53,7 +49,9 @@ public class OrderBillContoller {
 
     private void calculateCost() {
        if(repairCostTxt.getText() != null){
-           lblNetCost.setText(repairCostTxt.getText());
+           double total=0;
+           total= ((Double.parseDouble(repairCostTxt.getText()))+(Double.parseDouble(lblPartCost.getText())));
+           lblNetCost.setText(String.valueOf(total));
 
        }
     }
@@ -71,5 +69,11 @@ public class OrderBillContoller {
 
     public void calculateBtnOnAction(ActionEvent actionEvent) {
         calculateCost();
+    }
+
+    public void billBtnOnAction(ActionEvent actionEvent) {
+        lblOrderId.setText(orderId);
+        lblItemCode.setText(itemcode);
+        loardPartcost();
     }
 }

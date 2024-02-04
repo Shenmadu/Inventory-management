@@ -72,12 +72,12 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </JFXButton>
-                  <JFXButton fx:id="calculateBtn" layoutX="644.0" layoutY="15.0" onAction="#calculateBtnOnAction" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #9575cd;" text="Calculate" textFill="WHITE" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                  <JFXButton fx:id="calculateBtn" layoutX="644.0" layoutY="15.0" onAction="#calculateBtnOnAction" prefHeight="30.0" prefWidth="148.0" style="-fx-background-color: #9575cd;" text="Calculate Net Cost" textFill="WHITE" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="150.0" />
+                        <Insets left="100.0" />
                      </GridPane.margin>
                   </JFXButton>
                </children>
@@ -135,6 +135,14 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <JFXButton fx:id="billBtn" onAction="#billBtnOnAction" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #9575cd;" text="Generate Bill" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </JFXButton>
                </children>
             </GridPane>
          </children>
