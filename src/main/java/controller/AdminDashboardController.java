@@ -11,9 +11,7 @@ import java.io.IOException;
 public class AdminDashboardController {
     public JFXButton backButton;
     public JFXButton updateBtn;
-
-    public JFXButton createAccountBtn;
-    public JFXButton placeOrderBtn;
+    public JFXButton registerBtn;
 
 
     public void backButtonOnAction(ActionEvent actionEvent) {
@@ -36,22 +34,15 @@ public class AdminDashboardController {
         }
     }
 
-    public void CreateAccountBtnOnAction(ActionEvent actionEvent) {
-        Stage stage=(Stage) createAccountBtn.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/CreateAccountForm.fxml"))));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    public void placeOrderButtonOnAction(ActionEvent actionEvent) {
-        Stage stage=(Stage) updateBtn.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/PlaceOrderForm.fxml"))));
-            stage.show();
 
+
+
+    public void registerBtnOnAction(ActionEvent actionEvent) {
+        Stage stage=(Stage) registerBtn.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/RegisterNewUser.fxml"))));
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

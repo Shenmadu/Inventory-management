@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
@@ -48,8 +49,6 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="200.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
@@ -62,35 +61,29 @@
                 <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="UserId" GridPane.columnIndex="1">
+                  <Label layoutX="212.0" layoutY="9.0" text="Type" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="212.0" layoutY="9.0" text="Type" GridPane.columnIndex="3">
+                  <Label layoutX="317.0" layoutY="9.0" text="Email" GridPane.columnIndex="3">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="317.0" layoutY="9.0" text="Email" GridPane.columnIndex="5">
+                  <Label layoutX="372.0" layoutY="9.0" text="Password" GridPane.columnIndex="5">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="372.0" layoutY="9.0" text="Password" GridPane.columnIndex="7">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <JFXButton prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #37d67a;" text="Button" textFill="WHITE" GridPane.columnIndex="9" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <JFXButton fx:id="createBtn" onAction="#createBtnOnAction" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #37d67a;" text="Create" textFill="WHITE" GridPane.columnIndex="7" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </JFXButton>
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                  <JFXTextField layoutX="52.0" layoutY="64.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                  <JFXTextField layoutX="162.0" layoutY="64.0" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                  <JFXTextField layoutX="272.0" layoutY="64.0" GridPane.columnIndex="7" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <JFXTextField fx:id="emailTxt" layoutX="162.0" layoutY="64.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <JFXTextField fx:id="pwdTxt" layoutX="272.0" layoutY="64.0" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                  <JFXComboBox fx:id="cmbType" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                </children>
             </GridPane>
             <JFXTreeTableView GridPane.columnIndex="1" GridPane.rowIndex="3">
