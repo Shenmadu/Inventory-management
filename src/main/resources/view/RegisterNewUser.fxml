@@ -18,9 +18,9 @@
    <top>
       <GridPane prefHeight="541.0" prefWidth="808.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="0.0" prefWidth="37.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="758.0" minWidth="10.0" prefWidth="746.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="30.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="758.0" minWidth="10.0" prefWidth="523.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="30.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -86,13 +86,12 @@
                   <JFXComboBox fx:id="cmbType" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                </children>
             </GridPane>
-            <JFXTreeTableView GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <JFXTreeTableView fx:id="tblUsers" prefHeight="350.0" prefWidth="646.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <columns>
-                  <TreeTableColumn prefWidth="123.0" text="UserId" />
-                  <TreeTableColumn prefWidth="114.0" text="Type" />
-                  <TreeTableColumn prefWidth="219.0" text="Email" />
-                  <TreeTableColumn prefWidth="123.0" text="Column X" />
-                  <TreeTableColumn prefWidth="174.0" text="Column X" />
+                  <TreeTableColumn fx:id="colType" prefWidth="133.0" text="Type" />
+                  <TreeTableColumn fx:id="colEmail" prefWidth="220.0" text="Email" />
+                  <TreeTableColumn fx:id="colPwd" prefWidth="123.0" text="Password" />
+                  <TreeTableColumn fx:id="coloption" prefWidth="121.0" text="Option" />
                </columns>
             </JFXTreeTableView>
          </children>

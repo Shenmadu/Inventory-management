@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserBoImpl implements UserBo {
@@ -31,11 +32,25 @@ public class UserBoImpl implements UserBo {
 
     @Override
     public boolean deleteUser(String id) throws SQLException, ClassNotFoundException {
-        return false;
+        return userDao.delete(id);
     }
 
     @Override
     public List<UserDto> allUsers() throws SQLException, ClassNotFoundException {
+        List<User> usersList = userDao.getAll();
+        List<UserDto> list = new ArrayList<>();
+        if(usersList!=null){
+            for(User users:usersList){
+                list.add(
+                        new UserDto(
+                                users.getEmail(),
+                                users.getPassword(),
+                                users.getType()
+                        )
+                );
+            }
+            return list;
+        }
         return null;
     }
 

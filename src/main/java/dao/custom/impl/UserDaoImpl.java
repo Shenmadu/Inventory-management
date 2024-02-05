@@ -4,6 +4,7 @@ import dao.custom.UserDao;
 import dao.util.HibernateUtil;
 import dto.ItemDto;
 import dto.UserDto;
+import entity.Customer;
 import entity.Item;
 import entity.User;
 import org.hibernate.Criteria;
@@ -38,12 +39,23 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public boolean delete(String value) throws SQLException, ClassNotFoundException {
-        return false;
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(session.find(User.class,value));
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
     public List<User> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        try (Session session = HibernateUtil.getSession()){
+            Query<User> query = session.createQuery("FROM User");
+            List<User> usersList = query.list();
+            return usersList;
+        }catch (HibernateException e){
+            return null;
+        }
     }
 
     @Override
