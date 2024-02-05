@@ -12,4 +12,6 @@ public interface OrderBo extends SuperBo {
     boolean deleteOrder(String code) throws SQLException, ClassNotFoundException;
     boolean updateStatus(String orderId, String status);
 
+
+
 }

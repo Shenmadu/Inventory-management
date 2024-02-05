@@ -56,7 +56,6 @@ public class UserBoImpl implements UserBo {
 
     @Override
     public UserDto getUser(String email) throws SQLException, ClassNotFoundException {
-
         return userDao.getUser(email);
     }
     public ObservableList<String> getUserType() {

@@ -60,12 +60,12 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="128.0" layoutY="70.0" text="Customer Name :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label layoutX="128.0" layoutY="70.0" text="Catagory :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="128.0" layoutY="118.0" text="Contact Number :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label layoutX="128.0" layoutY="118.0" text="Date:" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -80,18 +80,12 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="128.0" layoutY="262.0" text="Total :" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
                   <JFXTextField fx:id="IdTxt" maxWidth="317.0" prefHeight="25.0" prefWidth="317.0" GridPane.columnIndex="2" />
-                  <JFXTextField fx:id="nameTxt" layoutX="309.0" layoutY="71.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <JFXTextField fx:id="NumberTxt" layoutX="309.0" layoutY="119.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="categoryTxt" layoutX="309.0" layoutY="71.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="dateTxt" layoutX="309.0" layoutY="119.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <JFXTextField fx:id="codeTxt" layoutX="309.0" layoutY="167.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <JFXTextField fx:id="statusTxt" layoutX="309.0" layoutY="215.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <JFXTextField fx:id="totalTxt" layoutX="309.0" layoutY="263.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <JFXButton prefHeight="30.0" prefWidth="101.0" style="-fx-background-color: #00d084;" text="Search" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                  <JFXButton fx:id="searchBtn" onAction="#searchBtnOnAction" prefHeight="30.0" prefWidth="101.0" style="-fx-background-color: #00d084;" text="Search" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets left="5.0" right="6.0" />
                      </GridPane.margin>
