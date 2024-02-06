@@ -166,4 +166,25 @@ public class OrderDaoImpl implements OrderDao {
         }
 
     }
+    public List<Orders> getOrdersByStatus(String status){
+        try (Session session = HibernateUtil.getSession()) {
+            Transaction transaction = session.beginTransaction();
+
+
+            String hql = "FROM Orders WHERE status = :status";
+
+
+            Query<Orders> query = session.createQuery(hql, Orders.class);
+            query.setParameter("status", status);
+
+
+            List<Orders> ordersList = query.list();
+            return ordersList;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

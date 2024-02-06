@@ -103,7 +103,7 @@
                         <TreeTableColumn fx:id="colPendOption" prefWidth="123.0" text="Option" />
                      </columns>
                   </JFXTreeTableView>
-                  <JFXTreeTableView fx:id="pending2" GridPane.columnIndex="2">
+                  <JFXTreeTableView fx:id="pending2Tbl" GridPane.columnIndex="2">
                      <columns>
                         <TreeTableColumn fx:id="colpend2Code" prefWidth="75.0" text="Item Code" />
                         <TreeTableColumn fx:id="colpend2Catagory" prefWidth="99.0" text="Catagory" />

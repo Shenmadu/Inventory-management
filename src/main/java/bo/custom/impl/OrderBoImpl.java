@@ -3,10 +3,13 @@ package bo.custom.impl;
 import bo.custom.OrderBo;
 import dao.custom.OrderDao;
 import dao.custom.impl.OrderDaoImpl;
+import dto.ItemDto;
 import dto.OrderDto;
+import entity.Item;
 import entity.Orders;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderBoImpl implements OrderBo {
@@ -48,5 +51,24 @@ public class OrderBoImpl implements OrderBo {
     @Override
     public boolean updateStatus(String orderId, String status) {
         return orderDao.updateStatus(orderId,status);
+    }
+
+    @Override
+    public List<OrderDto> getOrdersByStatus(String status) {
+        List<Orders> entityList=orderDao.getOrdersByStatus(status);
+        List<OrderDto> list=new ArrayList<>();
+        for (Orders orders:entityList) {
+            list.add(new OrderDto(
+                    orders.getOrderId(),
+                    orders.getItem(),
+                    orders.getCatagory(),
+                    orders.getDate(),
+                    orders.getDescription(),
+                    orders.getStatus(),
+                   null,
+                    null
+            ));
+        }
+        return list;
     }
 }

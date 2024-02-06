@@ -8,6 +8,7 @@ import dao.custom.OrderDao;
 import dao.custom.impl.OrderDaoImpl;
 import dto.OrderDto;
 import dto.tm.InventoryTm;
+import entity.Orders;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,7 +54,7 @@ public class InventoryController {
     private TreeTableColumn<?, ?> colPendOption;
 
     @FXML
-    private JFXTreeTableView<?> pending2;
+    private JFXTreeTableView<?> pending2Tbl;
 
     @FXML
     private TreeTableColumn<?, ?> colpend2Code;
@@ -77,7 +78,7 @@ public class InventoryController {
     private TreeTableColumn<?, ?> colProOption;
 
     @FXML
-    private JFXTreeTableView<?> completedTbl;
+    private JFXTreeTableView<InventoryTm> completedTbl;
 
     @FXML
     private TreeTableColumn<?, ?> colComCode;
@@ -98,20 +99,21 @@ public class InventoryController {
         colProCatagory.setCellValueFactory(new TreeItemPropertyValueFactory<>("category"));
         colProOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
-        loardPendingTable();
+        colComCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemCode"));
+        colComCatagory.setCellValueFactory(new TreeItemPropertyValueFactory<>("category"));
+        colComOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
+
+        loardPendingTable("pending");
+        loardProcessingTable("Processing");
+        loardCompletedTable("Completed");
+        
 
     }
 
-    private void loardPendingTable() {
+    private void loardCompletedTable(String completed) {
         ObservableList<InventoryTm> tmlist = FXCollections.observableArrayList();
         List<OrderDto> dtoList = null;
-        try {
-            dtoList = orderDao.getAll();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        dtoList = orderBo.getOrdersByStatus(completed);
         for (OrderDto dto:dtoList) {
             JFXButton btn = new JFXButton("Delete");
             btn.setStyle("-fx-background-color: red;");
@@ -124,7 +126,60 @@ public class InventoryController {
 
             );
             btn.setOnAction(actionEvent -> {
-                        deleteOrder(dto.getOrderId());
+                deleteOrder(dto.getOrderId());
+            });
+
+            tmlist.add(inventoryTm);
+            RecursiveTreeItem<InventoryTm> treeItem=new RecursiveTreeItem<>(tmlist, RecursiveTreeObject::getChildren);
+            completedTbl.setRoot(treeItem);
+            completedTbl.setShowRoot(false);
+        }
+
+    }
+
+    private void loardProcessingTable(String status) {
+        ObservableList<InventoryTm> tmlist = FXCollections.observableArrayList();
+        List<OrderDto> dtoList = null;
+        dtoList = orderBo.getOrdersByStatus(status);
+        for (OrderDto dto:dtoList) {
+            JFXButton btn = new JFXButton("Delete");
+            btn.setStyle("-fx-background-color: red;");
+            InventoryTm inventoryTm=new InventoryTm(
+                    dto.getItem(),
+                    dto.getStatus(),
+                    dto.getCatagory(),
+                    dto.getDate(),
+                    btn
+
+            );
+            btn.setOnAction(actionEvent -> {
+                deleteOrder(dto.getOrderId());
+            });
+
+            tmlist.add(inventoryTm);
+            RecursiveTreeItem<InventoryTm> treeItem=new RecursiveTreeItem<>(tmlist, RecursiveTreeObject::getChildren);
+            processingTbl.setRoot(treeItem);
+            processingTbl.setShowRoot(false);
+        }
+    }
+
+    private void loardPendingTable(String status) {
+        ObservableList<InventoryTm> tmlist = FXCollections.observableArrayList();
+        List<OrderDto> dtoList = null;
+        dtoList = orderBo.getOrdersByStatus(status);
+        for (OrderDto dto:dtoList) {
+            JFXButton btn = new JFXButton("Delete");
+            btn.setStyle("-fx-background-color: red;");
+            InventoryTm inventoryTm=new InventoryTm(
+                    dto.getItem(),
+                    dto.getStatus(),
+                    dto.getCatagory(),
+                    dto.getDate(),
+                    btn
+
+            );
+            btn.setOnAction(actionEvent -> {
+                deleteOrder(dto.getOrderId());
             });
 
             tmlist.add(inventoryTm);
@@ -142,7 +197,7 @@ public class InventoryController {
 
             if (isDeleted){
                 new Alert(Alert.AlertType.INFORMATION,"Order Deleted!").show();
-                loardPendingTable();
+
 
             }else{
                 new Alert(Alert.AlertType.ERROR,"Something went wrong!").show();
