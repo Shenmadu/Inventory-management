@@ -1,15 +1,21 @@
 package controller;
 
 import bo.custom.CustomerBo;
+import bo.custom.ItemBo;
 import bo.custom.OrderBo;
 import bo.custom.impl.CustomerBoImpl;
+import bo.custom.impl.ItemBoImpl;
 import bo.custom.impl.OrderBoImpl;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.CustomerDto;
 
+import dto.ItemDto;
 import dto.OrderDetailsDto;
 import dto.OrderDto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +37,9 @@ public class PlaceOrderFormController {
     public JFXTextField orderIdTxt;
     public Label lblOrderId;
     public Label lblCustId;
+    public JFXComboBox cmbCode;
+
+    public JFXComboBox cmbCategory;
     @FXML
     private Label lblDate;
 
@@ -46,11 +55,9 @@ public class PlaceOrderFormController {
     @FXML
     private JFXTextField NumberTxt;
 
-    @FXML
-    private JFXTextField catagoryTxt;
 
-    @FXML
-    private JFXTextField ItemTxt;
+
+
 
     @FXML
     private JFXTextField DescriptionTxt;
@@ -64,11 +71,36 @@ public class PlaceOrderFormController {
 private OrderBo orderBo=new OrderBoImpl();
 private CustomerBo customerBo=new CustomerBoImpl();
 
+private ItemBo itemBo=new ItemBoImpl();
+
+
+
 
     public void initialize(){
         calculateDate();
         setOrderId();
         setCustomerId();
+        loadItemCodes();
+        loadCatagory();
+    }
+
+    private void loadCatagory() {
+       cmbCategory.setItems(itemBo.getItemType());
+    }
+
+    private void loadItemCodes() {
+        try {
+            List<ItemDto> allItems = itemBo.allItems();
+            ObservableList list = FXCollections.observableArrayList();
+            for (ItemDto dto:allItems) {
+                list.add(dto.getItemCode());
+            }
+            cmbCode.setItems(list);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setOrderId() {
@@ -114,7 +146,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
             List<OrderDetailsDto> list = new ArrayList<>();
             list.add(new OrderDetailsDto(
                     lblOrderId.getText(),
-                    ItemTxt.getText(),
+                    cmbCode.getValue().toString(),
                     Double.parseDouble(priceTxt.getText())
 
             ));
@@ -122,8 +154,8 @@ private CustomerBo customerBo=new CustomerBoImpl();
             try {
                 Boolean isSaved = orderBo.saveOrder(new OrderDto(
                         lblOrderId.getText(),
-                        ItemTxt.getText(),
-                        catagoryTxt.getText(),
+                        cmbCode.getValue().toString(),
+                        cmbCategory.getValue().toString(),
                         LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                         DescriptionTxt.getText(),
                         "pending",
@@ -156,9 +188,7 @@ private CustomerBo customerBo=new CustomerBoImpl();
         nameTxt.clear();
         NumberTxt.clear();
         emailTxt.clear();
-        catagoryTxt.clear();
         DescriptionTxt.clear();
-        ItemTxt.clear();
         partsTxt.clear();
         priceTxt.clear();
     }

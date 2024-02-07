@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -109,8 +110,6 @@
                   <JFXTextField fx:id="nameTxt" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <JFXTextField fx:id="emailTxt" layoutX="309.0" layoutY="71.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <JFXTextField fx:id="NumberTxt" layoutX="309.0" layoutY="119.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <JFXTextField fx:id="catagoryTxt" layoutX="309.0" layoutY="167.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <JFXTextField fx:id="ItemTxt" layoutX="309.0" layoutY="215.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                   <JFXTextField fx:id="DescriptionTxt" layoutX="309.0" layoutY="263.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                   <JFXTextField fx:id="partsTxt" layoutX="309.0" layoutY="311.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                   <JFXTextField fx:id="priceTxt" layoutX="309.0" layoutY="359.0" maxWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
@@ -145,6 +144,8 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <JFXComboBox fx:id="cmbCode" prefHeight="25.0" prefWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <JFXComboBox fx:id="cmbCategory" layoutX="309.0" layoutY="263.0" prefHeight="25.0" prefWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </children>

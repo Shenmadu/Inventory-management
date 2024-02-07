@@ -3,6 +3,9 @@ package dao.custom.impl;
 import dao.custom.ItemDao;
 import dao.util.HibernateUtil;
 import entity.Item;
+import entity.Orders;
+import entity.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -34,7 +37,13 @@ public class ItemDaoImpl implements ItemDao {
 
     @Override
     public List<Item> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        try (Session session = HibernateUtil.getSession()){
+            Query<Item> query = session.createQuery("FROM Item");
+            List<Item> items = query.list();
+            return items;
+        }catch (HibernateException e){
+            return null;
+        }
     }
 
     @Override

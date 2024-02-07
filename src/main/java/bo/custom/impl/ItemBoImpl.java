@@ -4,7 +4,9 @@ import bo.custom.ItemBo;
 import dao.custom.ItemDao;
 import dao.custom.impl.ItemDaoImpl;
 import dto.ItemDto;
+import dto.UserDto;
 import entity.Item;
+import entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -37,6 +39,20 @@ public class ItemBoImpl implements ItemBo {
 
     @Override
     public List<ItemDto> allItems() throws SQLException, ClassNotFoundException {
+        List<Item> itemList = itemDao.getAll();
+        List<ItemDto> list = new ArrayList<>();
+        if(itemList!=null){
+            for(Item item:itemList){
+                list.add(
+                        new ItemDto(
+                               item.getItemCode(),
+                                item.getCatagory(),
+                                item.getName()
+                        )
+                );
+            }
+            return list;
+        }
         return null;
     }
 
