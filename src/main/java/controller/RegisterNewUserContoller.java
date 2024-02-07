@@ -18,6 +18,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -128,9 +129,10 @@ UserBo userBo=new UserBoImpl();
     @FXML
     public void createBtnOnAction(ActionEvent actionEvent) {
             try {
+                String hashedPassword = BCrypt.hashpw(pwdTxt.getText(), BCrypt.gensalt());
                 Boolean saved = userBo.saveUser(new UserDto(
                         emailTxt.getText(),
-                        pwdTxt.getText(),
+                        hashedPassword,
                         cmbType.getValue().toString()
                 ));
                 if (saved) {

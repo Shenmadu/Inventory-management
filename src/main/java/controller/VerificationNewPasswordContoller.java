@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import lombok.Setter;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -42,7 +43,8 @@ public class VerificationNewPasswordContoller {
 
     public void sumbitBtnOnAction(ActionEvent actionEvent) {
         try {
-            boolean updated = userBo.updatePassword(email, retypePwdTxt.getText());
+            String hashedPassword = BCrypt.hashpw(retypePwdTxt.getText(), BCrypt.gensalt());
+            boolean updated = userBo.updatePassword(email, hashedPassword);
             if(updated){
                 new Alert(Alert.AlertType.INFORMATION, "Change Password successfully!").show();
             }

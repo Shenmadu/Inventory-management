@@ -17,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -59,7 +60,8 @@ public class DashboardFormController {
 
                 UserDto userDto = userBo.getUser(enteredUserName);
 
-                if (userDto != null && userDto.getPassword().equals(enteredPassword) && userDto.getType().equals("User") ) {
+
+                if (userDto != null &&  BCrypt.checkpw(enteredPassword, userDto.getPassword()) && userDto.getType().equals("User")){
                     Stage stage=(Stage) user.getScene().getWindow();
                try {
                    stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/UserDashboard.fxml"))));
@@ -87,7 +89,7 @@ public class DashboardFormController {
 
             try {
                 UserDto userDto = userBo.getUser(enteredUserName);
-                if (userDto != null && userDto.getPassword().equals(enteredPassword) && userDto.getType().equals("Admin")) {
+                if (userDto != null && BCrypt.checkpw(enteredPassword, userDto.getPassword()) && userDto.getType().equals("Admin")) {
                     Stage stage=(Stage) user.getScene().getWindow();
                try {
                    stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AdminDashboard.fxml"))));

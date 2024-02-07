@@ -11,9 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class CreateAccountFormController {
     public JFXButton backButton;
@@ -46,19 +48,20 @@ public class CreateAccountFormController {
     public void createBtnOnAction(ActionEvent actionEvent) {
         if (createPwdtxt.getText().equals(retypePwdTxt.getText())){
             try {
+                String hashedPassword = BCrypt.hashpw(retypePwdTxt.getText(), BCrypt.gensalt());
                 Boolean saved = userBo.saveUser(new UserDto(
                         emailTxt.getText(),
-                        retypePwdTxt.getText(),
+                        hashedPassword,
                         cmbCategory.getValue().toString()
                 ));
                 if (saved) {
                     new Alert(Alert.AlertType.INFORMATION, "Register succesfull!").show();
                     clearFields();
                 }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+            } catch (SQLIntegrityConstraintViolationException ex) {
+                new Alert(Alert.AlertType.ERROR, "Duplicate Entry").show();
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
             }
     }else {
             new Alert(Alert.AlertType.INFORMATION, "Not match your password").show();
