@@ -42,6 +42,7 @@ public class CreateAccountFormController {
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
+
         }
     }
 

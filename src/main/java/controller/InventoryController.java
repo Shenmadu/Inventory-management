@@ -88,7 +88,7 @@ public class InventoryController {
 
     @FXML
     private TreeTableColumn<?, ?> colComOption;
-    OrderDao orderDao=new OrderDaoImpl();
+
     OrderBo orderBo=new OrderBoImpl();
     public void initialize() {
         colPendCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("itemCode"));

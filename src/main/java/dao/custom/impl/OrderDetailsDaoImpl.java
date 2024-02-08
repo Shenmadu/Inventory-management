@@ -58,24 +58,7 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
             return false;
         }
     }
-//    public OrderDetails getPartCost(String orderId, String itemCode) {
-//        try (Session session = HibernateUtil.getSession()) {
-//            Query<OrderDetails> query = session.createQuery("FROM OrderDetails WHERE id.orderId = :orderId AND id.itemCode = :itemCode", OrderDetails.class);
-//            query.setParameter("orderId", orderId);
-//            query.setParameter("itemCode", itemCode);
-//
-//            OrderDetails orderDetails = query.uniqueResult();
-//
-//            if (orderDetails != null) {
-//                return new OrderDetails(
-//                        orderDetails.getPartsCost()
-//                );
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+
 public OrderDetailsDto getOrder(String orderId, String itemCode) {
     try (Session session = HibernateUtil.getSession()) {
         Query<OrderDetails> query = session.createQuery("FROM OrderDetails WHERE id.orderId = :orderId AND id.itemCode = :itemCode", OrderDetails.class);

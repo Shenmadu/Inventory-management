@@ -5,8 +5,10 @@ import dao.custom.OrderDao;
 import dao.custom.impl.OrderDaoImpl;
 import dto.ItemDto;
 import dto.OrderDto;
+import dto.UserDto;
 import entity.Item;
 import entity.Orders;
+import entity.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -70,5 +72,47 @@ public class OrderBoImpl implements OrderBo {
             ));
         }
         return list;
+    }
+
+    @Override
+    public List<OrderDto> getAllOrder() {
+        List<Orders> ordersList = orderDao.getAllOrder();
+        List<OrderDto> list = new ArrayList<>();
+        if(ordersList!=null){
+            for(Orders orders:ordersList){
+                list.add(
+                        new OrderDto(
+                                orders.getOrderId(),
+                                orders.getItem(),
+                                orders.getCatagory(),
+                                orders.getDate(),
+                                orders.getDescription(),
+                                orders.getStatus(),
+                                orders.getCustomer().getCustomerId(),
+                                null
+                        )
+                );
+            }
+            return list;
+        }
+        return null;
+    }
+
+    @Override
+    public OrderDto searchOrder(String orderId) throws SQLException, ClassNotFoundException {
+        Orders orders = orderDao.searchOrder(orderId);
+        if(orders!=null){
+            return new OrderDto(
+                    orders.getOrderId(),
+                    orders.getItem(),
+                    orders.getCatagory(),
+                    orders.getDate(),
+                    orders.getDescription(),
+                    orders.getStatus(),
+                    null,
+                    null
+            );
+        }
+        return null;
     }
 }

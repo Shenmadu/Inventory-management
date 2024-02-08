@@ -1,5 +1,7 @@
 package controller;
 
+import bo.custom.OrderBo;
+import bo.custom.impl.OrderBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dao.custom.OrderDao;
@@ -23,7 +25,8 @@ public class OrderDetailFormController {
     public JFXTextField statusTxt;
     public JFXButton searchBtn;
 
-    OrderDao orders=new OrderDaoImpl();
+
+    OrderBo orderBo=new OrderBoImpl();
     public void backButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) backBtn.getScene().getWindow();
 
@@ -37,13 +40,13 @@ public class OrderDetailFormController {
 
     public void searchBtnOnAction(ActionEvent actionEvent) {
         try {
-            OrderDto orderDto = orders.searchOrder(IdTxt.getText());
+            OrderDto orderDto = orderBo.searchOrder(IdTxt.getText());
 
             if (orderDto!=null){
-                codeTxt.setText(orderDto.getDescription());
-                categoryTxt.setText(orderDto.getItem());
+                codeTxt.setText(orderDto.getItem());
+                categoryTxt.setText(orderDto.getCatagory());
                 statusTxt.setText(orderDto.getStatus());
-                dateTxt.setText(orderDto.getCatagory());
+                dateTxt.setText(orderDto.getDate());
 
             }else {
                 new Alert(Alert.AlertType.INFORMATION, "Invalid Order Id!").show();

@@ -31,7 +31,7 @@ public class UpdateStatusController {
     public JFXButton updateBtn;
     public JFXButton addPartsBtn;
     public JFXButton billBtn;
-    OrderDao orderDao=new OrderDaoImpl();
+//    OrderDao orderDao=new OrderDaoImpl();
     OrderBo orderBo=new OrderBoImpl();
 
     public void initialize(){
@@ -51,12 +51,12 @@ public class UpdateStatusController {
 
     public void searchBtnOnAction(ActionEvent actionEvent) {
         try {
-            OrderDto orderDto = orderDao.searchOrder(idTxt.getText());
+            OrderDto orderDto =orderBo.searchOrder(idTxt.getText());
 
             if (orderDto!=null){
-                codeTxt.setText(orderDto.getDescription());
+                codeTxt.setText(orderDto.getItem());
                 statusTxt.setText(orderDto.getStatus());
-                dateTxt.setText(orderDto.getCatagory());
+                dateTxt.setText(orderDto.getDate());
 
             }else {
                 new Alert(Alert.AlertType.INFORMATION, "Invalid Order Id!").show();

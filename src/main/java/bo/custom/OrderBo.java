@@ -14,6 +14,8 @@ public interface OrderBo extends SuperBo {
     boolean updateStatus(String orderId, String status);
 
     List<OrderDto> getOrdersByStatus(String status);
+    List<OrderDto> getAllOrder();
+    OrderDto searchOrder(String orderId)throws SQLException, ClassNotFoundException;
 
 
 
